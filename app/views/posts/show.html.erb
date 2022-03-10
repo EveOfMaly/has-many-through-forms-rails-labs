@@ -1,1 +1,33 @@
+Title: 
+<%= @post.title %>
+<br>
+Content: 
+<%= @post.content %>
+<br>
+
+Catagories: 
+<ul>
+<% @post.categories.each do |categories| %>
+           <li>   <%=  categories.name %> </li>
+    <% end  %>
+<br>
+</ul>
+
+Comments: 
+<ul>
+<% @post.comments.each do |comment| %>
+           <li>   <%=  comment.content %> </li>
+    <% end  %>
+<br>
+</ul>
+
+Users who have commented: 
+<ul>
+<% @post.unique_users_who_commented.each do |user| %>
+   <li> <%=  link_to user.username, user_path(user.id) %></li>
+  <% end  %>
+ </ui> 
+
+
+
 
