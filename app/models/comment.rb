@@ -3,18 +3,8 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   accepts_nested_attributes_for :user
 
-
   def user_attributes=(user_attributes)
-
-    binding.pry
+    self.user = User.find_or_create_by(username: user_attributes[:username]) unless user_attributes[:username].blank?
   end
 
 end
-
-
-# <ul>
-# <% @post.unique_users_who_commented.each do |user| %>
-#    <li> <%=  link_to user.username, user_path(user.id) %></li>
-#   <% end  %>
-#  </ui> 
-# <br>
